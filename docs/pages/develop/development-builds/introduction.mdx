@@ -1,4 +1,259 @@
----
+-# MASTER PROMPT: BUILD JPAY — GLOBAL MONEY TRANSFER APP
+
+Build a professional, modern mobile fintech application named **JPay**, inspired by the user experience of OPay, Wise, and other digital wallet applications.
+
+## 1. PLATFORM AND TECHNOLOGY
+
+- Use Expo with React Native and TypeScript.
+- Use Expo Router for navigation.
+- Support Android and iOS from the same codebase.
+- Use a clean, modern, responsive mobile-first design.
+- Use Expo-compatible libraries and avoid unnecessary dependencies.
+- Provide a project that can run in Expo Go where compatible and can be built for Android and iOS using EAS Build.
+- Include clear setup instructions and an organized, maintainable codebase.
+
+## 2. JPAY LOGO AND BRANDING
+
+Use the uploaded JPay logo as the official app icon.
+
+- Configure the logo in `assets/images/icon.png` and the appropriate Expo app configuration.
+- Use the logo on the splash screen, welcome screen, login screen, registration screen, and profile.
+- Preserve the original logo proportions, colors, and design.
+- Create a premium fintech appearance using a consistent color palette, elegant typography, rounded cards, and intuitive icons.
+- Display the brand name as JPay.
+- Do not substitute the logo with a random icon or generate a different brand identity.
+
+## 3. USER AUTHENTICATION AND SECURITY
+
+Implement:
+- Welcome, sign-up, login, logout, and password-reset screens.
+- Email and phone-number registration.
+- Phone-number country codes.
+- Email and phone verification through a configured authentication provider.
+- Secure session management.
+- PIN and biometric authentication where supported.
+- Profile management and account settings.
+- Protected screens that cannot be accessed when logged out.
+- Secure storage for sensitive session information.
+
+Never store passwords, secret keys, payment credentials, or authentication tokens in plain text.
+
+## 4. HOME DASHBOARD
+
+Create an attractive JPay dashboard with:
+- Total wallet balance.
+- Selected display currency.
+- Hide/show balance button.
+- Send Money.
+- Receive Money.
+- Add Money.
+- Withdraw Money.
+- Exchange Currency.
+- Transaction History.
+- Beneficiaries and saved recipients.
+- Notifications.
+- Profile and security settings.
+
+Show recent transactions, account activity, transaction status, and clear loading, empty, and error states.
+
+## 5. WORLDWIDE MULTI-CURRENCY SUPPORT
+
+Design JPay to support currencies used around the world.
+
+- Include an up-to-date currency database based on ISO 4217 currency codes.
+- Support currencies such as EUR, USD, GBP, NGN, GHS, KES, ZAR, CAD, AUD, CHF, INR, JPY, CNY, BRL, and other supported currencies.
+- Include currency search and selection.
+- Format amounts according to the selected currency and locale.
+- Support decimal precision and currencies that do not use two decimal places.
+- Use a configurable, reputable exchange-rate API for current exchange rates.
+- Display the exchange-rate provider, rate timestamp, fees, and final conversion amount.
+- Allow users to select sending and receiving currencies.
+- Clearly distinguish a currency being displayed from a currency that can actually be deposited, withdrawn, or transferred.
+- Handle unavailable currencies, stale exchange rates, and failed API requests gracefully.
+
+Do not claim that every currency is available for real transactions simply because it appears in the currency selector.
+
+## 6. SEND MONEY
+
+Create a complete money-transfer interface.
+
+1. Select an existing beneficiary or add a new recipient.
+2. Select the destination country.
+3. Enter the recipient's required payment details.
+4. Choose the source currency and destination currency.
+5. Enter the transfer amount.
+6. Calculate the conversion rate, fees, and total amount.
+7. Display a transaction review screen before confirmation.
+8. Require explicit confirmation and appropriate authentication.
+9. Submit the transfer through the configured payment provider.
+10. Display success only after the backend confirms the transaction.
+11. Generate a receipt with a unique transaction reference.
+12. Update transaction history using the authoritative backend status.
+
+Prevent duplicate submissions, double spending, and repeated transfers caused by network retries.
+
+Include transaction statuses: Pending, Processing, Completed, Failed, and Reversed where applicable.
+
+## 7. ADD MONEY AND WITHDRAW MONEY
+
+Build dedicated deposit and withdrawal screens.
+
+Deposits:
+- Show payment methods available in the user's country.
+- Support provider-hosted card or bank payment flows where available.
+- Display deposit limits, fees, currency, and status.
+- Credit a wallet only after a verified provider confirmation.
+
+Withdrawals:
+- Allow users to select an eligible bank account or supported payout destination.
+- Collect and validate required recipient details.
+- Display withdrawal fees, limits, processing time, and net payout.
+- Require appropriate authentication and backend verification.
+- Track pending, successful, and failed withdrawals.
+
+Do not simulate successful real-money payments or mark a deposit or withdrawal as completed without authoritative confirmation.
+
+## 8. RECEIVE MONEY AND BENEFICIARIES
+
+Implement:
+- Unique user payment IDs.
+- Shareable payment requests.
+- QR-code payment requests where supported.
+- Beneficiary creation, editing, deletion, and search.
+- Favorite recipients.
+- Country-specific recipient validation.
+- Duplicate-recipient warnings.
+- Clear privacy controls for personal and banking information.
+
+## 9. WALLET AND TRANSACTION HISTORY
+
+Create a reliable multi-currency wallet interface.
+
+- Display balances separately for each currency.
+- Show available balance and pending transactions.
+- Maintain a server-authoritative, auditable ledger.
+- Record deposits, withdrawals, transfers, fees, conversions, reversals, and refunds.
+- Provide searchable and filterable transaction history.
+- Generate downloadable or shareable receipts.
+- Never rely solely on locally stored values to determine actual money balances.
+- Never allow users to edit their wallet balances directly.
+
+## 10. PAYMENT PROVIDER INTEGRATION
+
+Start in sandbox/test mode.
+
+Create a provider-independent payment architecture with server-side adapters for authorized providers, selected according to country availability, supported currencies, payout methods, and business eligibility.
+
+Evaluate suitable providers such as Stripe Connect, Adyen, and Wise Platform where their products and eligibility requirements fit the intended service.
+
+Requirements:
+- Keep secret API keys on the backend.
+- Use verified webhooks for payment status changes.
+- Verify webhook signatures.
+- Use idempotency keys for money-moving operations.
+- Validate payment amounts, limits, currency, and account status on the server.
+- Implement transaction reconciliation and audit logs.
+- Never embed secret credentials in the mobile application.
+- Do not assume that one provider supports every country or currency.
+- Keep sandbox transactions clearly labeled as TEST transactions.
+
+Do not enable live financial transactions until the provider has approved the business, the backend security controls are implemented, and applicable legal and compliance requirements are satisfied.
+
+## 11. BACKEND AND DATABASE
+
+Create a secure backend API and database architecture.
+
+Include data models for:
+- Users and authentication profiles.
+- Wallets and currency balances.
+- Ledger entries.
+- Beneficiaries.
+- Transactions.
+- Deposits and withdrawals.
+- Exchange-rate quotes.
+- Payment methods.
+- Notifications.
+- Compliance and verification status.
+- Audit logs.
+
+Use database transactions, appropriate access controls, server-side validation, and secure authorization. Never expose another user's account or financial records.
+
+Do not store raw card details or unnecessary sensitive banking data.
+
+## 12. SECURITY, COMPLIANCE, AND FRAUD PREVENTION
+
+Design for:
+- Strong authentication.
+- Encryption in transit.
+- Rate limiting.
+- Secure API authorization.
+- Transaction limits.
+- Suspicious-activity monitoring.
+- Fraud and duplicate-payment prevention.
+- Audit trails.
+- Appropriate customer identity verification.
+- Applicable KYC, AML, sanctions-screening, privacy, and financial licensing requirements.
+
+Use a licensed and authorized payment partner where required. Do not represent the application as a licensed bank or money-transfer operator unless that status has been obtained.
+
+## 13. DESIGN AND USER EXPERIENCE
+
+Create the following screens:
+1. Splash screen.
+2. Welcome screen.
+3. Sign-up.
+4. Login.
+5. Email or phone verification.
+6. Home dashboard.
+7. Wallet.
+8. Send money.
+9. Recipient details.
+10. Transfer review.
+11. Transfer result.
+12. Add money.
+13. Withdraw money.
+14. Currency exchange.
+15. Beneficiaries.
+16. Transaction history.
+17. Transaction details and receipt.
+18. Notifications.
+19. Profile.
+20. Security settings.
+21. Identity verification.
+22. Help and support.
+
+Make the application feel polished, trustworthy, and easy to use for people sending money internationally.
+
+## 14. TESTING AND ERROR HANDLING
+
+Test:
+- Registration, login, logout, and session persistence.
+- Navigation and protected routes.
+- Currency selection and amount formatting.
+- Exchange-rate calculations and rounding.
+- Invalid recipients and transfer amounts.
+- Insufficient balances.
+- Network failures and expired quotes.
+- Duplicate submission prevention.
+- Payment-provider errors and webhook processing.
+- Deposit and withdrawal status transitions.
+- Transaction ledger consistency.
+- Android and iOS layout compatibility.
+
+Add unit tests for money calculations and integration tests for critical payment flows.
+
+## 15. IMPLEMENTATION RULES
+
+Build a functioning application, not just static mockup screens.
+
+First inspect the project and create a clear implementation plan. Then build the app in small, testable stages.
+
+Preserve working code, avoid unnecessary rewrites, and do not replace the entire project when targeted changes are sufficient.
+
+If a required backend, payment-provider account, API key, or approval is missing, explain exactly what is needed and implement the safe sandbox-ready integration without inventing credentials.
+
+Begin with the app structure, branding, authentication, navigation, and demo wallet. Then implement the currency service, beneficiary management, transaction review, sandbox payment flows, backend ledger, and provider integrations.
+Final goal: Deliver a professional JPay mobile application for Android and iOS, with the uploaded logo as its app icon, international multi-currency support, secure wallet architecture, and a clear path from sandbox testing to legally authorized real-money transfers.--
 title: Introduction to development builds
 sidebar_title: Introduction and setup
 description: Learn how to create a development build in your Expo project and why use a development build instead of Expo Go.
